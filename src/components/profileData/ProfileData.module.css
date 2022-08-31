@@ -1,0 +1,50 @@
+.profileData{
+    width: 100%;
+    /* margin-top: 10px; */
+    background: rgb(247, 241, 241);
+    border-radius: 10px;
+}
+
+.navbar{
+    position: relative;
+    height: 70px;
+    display: flex;
+    /* background: #000; */
+
+    border-bottom: 3px solid white;
+}
+
+.photo{
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    top: 10px;
+    margin-left: 10px;
+    border-radius: 100%;
+    background: rgb(68, 68, 68);
+}
+
+.name{
+    width: 220px;
+    /* background: yellow; */
+    line-height: 70px;
+    margin-left: 70px;
+}
+
+.correct{
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    top: 30px;
+    right: 10px;
+    background: #000;
+}
+
+.menu{
+    margin-left: 10px;
+    padding-bottom: 5px;
+}
+
+.partMenu{
+    cursor: pointer;
+}

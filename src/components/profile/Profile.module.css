@@ -1,0 +1,23 @@
+.profile{
+    position: relative;
+    width: 100%;
+    /* min-height: calc(100vh - 50px); */
+    background: red;
+}
+
+.profileBlock{
+    position: relative;
+    width: 100%;
+}
+
+.data{
+    position: absolute;
+    width: 25%;
+}
+
+.outlet{
+    position: absolute;
+    width: 70%;
+    background: blue;
+    right: 0;
+}

@@ -1,0 +1,46 @@
+.addAdv{
+    width: 100%;
+}
+
+.typeAdv{
+    position: relative;
+    width: 100%;
+    height: 60px;
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.searchNeighbor{
+    position: absolute;
+    width: 50%;
+    left: 0;
+    line-height: 60px;
+    text-align: center;
+    cursor: pointer;
+    color: rgb(102, 102, 102);
+}
+
+.searchHouse{
+    position: absolute;
+    width: 50%;
+    right: 0;
+    line-height: 60px;
+    text-align: center;
+    cursor: pointer;
+    color: rgb(102, 102, 102);
+}
+
+.searchNeighbor, .searchHouse {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;  
+    -khtml-user-select: none;   
+    -moz-user-select: none;     
+    -ms-user-select: none;      
+    user-select: none;                                          
+}
+
+.active{
+    background: rgb(247, 241, 241);
+    color: black;
+    border-radius: 10px;
+}
