@@ -1,41 +1,30 @@
-.searchHouse{
-    display: flex;
+.dataObject{
+    width: 100%;
+    margin-top: 50px;
+
     -webkit-touch-callout: none; 
     -webkit-user-select: none;   
     -khtml-user-select: none;    
     -moz-user-select: none;      
     -ms-user-select: none;       
-    user-select: none;           
+    user-select: none;     
 }
 
 .intro{
     text-align: center;
 }
 
-.aboutMe{
+.data{
+    display: flex;
+}
+
+.photoBlock{
     width: 50%;
+    height: 512px;
 }
 
-.searchData{
+.info{
     width: 50%;
-}
-
-.notImportant{
-    width: 100px;
-    height: 40px;
-    border: 1px solid rgb(143, 143, 143);
-    border-radius: 5px;
-    color: rgb(95, 95, 95);
-    line-height: 40px;
-    text-align: center;
-    margin-left: 30px;
-    cursor: pointer;
-}
-
-.notImportantActive{
-    border: 1px solid rgb(143, 143, 143);
-    background: rgb(143, 143, 143);
-    color: white;
 }
 
 .typeSearch{
@@ -56,23 +45,26 @@
 }
 
 .oneInputWithWidth{
-    width: 400px;
+    width: fit-content;
     margin: 0 auto;
     margin-top: 20px;
     margin-bottom: 5px;
 }
 
 .buttons{
+    width: fit-content;
     display: flex;
+    margin: 0 auto;
 }
 
 .oneButton{
     margin-right: 5px;
+    margin-left: 5px;
 }
+
 
 .active{
     background: rgb(247, 241, 241);
     color: black;
     border-radius: 10px;
 }
-

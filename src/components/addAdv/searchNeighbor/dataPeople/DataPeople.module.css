@@ -1,11 +1,12 @@
-.searchHouse{
+.dataPeople{
     display: flex;
+
     -webkit-touch-callout: none; 
     -webkit-user-select: none;   
     -khtml-user-select: none;    
     -moz-user-select: none;      
     -ms-user-select: none;       
-    user-select: none;           
+    user-select: none;     
 }
 
 .intro{
@@ -16,8 +17,29 @@
     width: 50%;
 }
 
+.aboutObject{
+    margin-top: 50px;
+}
+
 .searchData{
     width: 50%;
+}
+
+.choiceGender{
+    display: flex;
+    width: 412px;
+    height: 40px;
+    margin: 0 auto;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.men, .women, .anyGender{
+    width: 200px;
+    text-align: center;
+    line-height: 40px;
+    cursor: pointer;
+    color: rgb(102, 102, 102);
 }
 
 .notImportant{
@@ -38,23 +60,6 @@
     color: white;
 }
 
-.typeSearch{
-    display: flex;
-    width: 412px;
-    height: 40px;
-    margin: 0 auto;
-    margin-top: 5px;
-    margin-bottom: 5px;
-}
-
-.oneTypeSearch{
-    width: 200px;
-    text-align: center;
-    line-height: 40px;
-    cursor: pointer;
-    color: rgb(102, 102, 102);
-}
-
 .oneInputWithWidth{
     width: 400px;
     margin: 0 auto;
@@ -70,9 +75,25 @@
     margin-right: 5px;
 }
 
+.checkBoxes{
+    width: 400px;
+    margin: 0 auto;
+}
+
+.oneCheckBox{
+    display: flex;
+    height: 40px;
+    margin-top: 11px;
+    margin-bottom: 11px;
+}
+
+.checkBox{
+    margin-top: 19px;
+    margin-right: 10px;
+}
+
 .active{
     background: rgb(247, 241, 241);
     color: black;
     border-radius: 10px;
 }
-

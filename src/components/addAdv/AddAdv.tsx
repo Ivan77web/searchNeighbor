@@ -6,62 +6,43 @@ import { Context } from "../..";
 import cl from "./AddAdv.module.css"
 import { SearchNeighbor } from "./searchNeighbor/SearchNeighbor";
 import { SearchHouse } from "./searchHouse/SearchHouse";
+import { MyButton } from "../ui/myButton/MyButton";
 
 const AddAdv: React.FC = () => {
     const { auth, firestore } = useContext(Context);
     const [user] = useAuthState(auth)
 
-    const [title, setTitle] = useState("")
-    const [body, setBody] = useState("")
-    const [price, setPrice] = useState("")
+
+
     const [typeAdv, setTypeAdv] = useState<string>("searchNeighbor")
 
     const handleType = (type: string) => {
         setTypeAdv(type)
     }
 
-    const handleTitle: React.ChangeEventHandler<HTMLInputElement> = (e) => {
-        setTitle(e.target.value)
-    }
+   
+    // const addAdv = async () => {
+    //     if (user) {
+    //         const advId = Date.now()
 
-    const handleBody: React.ChangeEventHandler<HTMLInputElement> = (e) => {
-        setBody(e.target.value)
-    }
+    //         // await setDoc(doc(firestore.collection("allAdvs").doc(`advs_${user.uid}`), `adv${advId}`, "adv"), {
+    //         //     advId: advId,
+    //         //     idOwner: user.uid,
+    //         //     title: title,
+    //         //     body: body,
+    //         //     price: price,
+    //         // });
 
-    const handlePrice: React.ChangeEventHandler<HTMLInputElement> = (e) => {
-        setPrice(e.target.value)
-    }
+    //         await setDoc(doc(firestore, "allAdvs", `adv_${user.uid}_${advId}`), {
+    //             advId: advId,
+    //             idOwner: user.uid,
+    //             title: title,
+    //             body: body,
+    //             price: price,
+    //         });
 
-    const addAdv = async () => {
-        if (user) {
-            const advId = Date.now()
-
-            // await setDoc(doc(firestore.collection("allAdvs").doc(`advs_${user.uid}`), `adv${advId}`, "adv"), {
-            //     advId: advId,
-            //     idOwner: user.uid,
-            //     title: title,
-            //     body: body,
-            //     price: price,
-            // });
-
-            await setDoc(doc(firestore, "allAdvs", `adv_${user.uid}_${advId}`), {
-                advId: advId,
-                idOwner: user.uid,
-                title: title,
-                body: body,
-                price: price,
-            });
-
-            // await setDoc(doc(firestore, "allAdvs_data", `adv_${user.uid}_${advId}`), {
-            //     userId: user.uid,
-            //     advId: advId
-            // });
-
-            setTitle("")
-            setBody("")
-            setPrice("")
-        }
-    }
+    //     }
+    // }
 
     return (
         <div className={cl.addAdv}>
@@ -93,20 +74,10 @@ const AddAdv: React.FC = () => {
                     }
                 </div>
 
-                <button onClick={addAdv}>Опубликовать</button>
+                <div className={cl.buttonAdd}>
+                    <MyButton width="100%" height="60px" bg="rgb(133, 33, 26)" color="white" name="Опубликовать"/>
+                </div>
 
-
-
-
-                {/* ТУТ БУДЕТ ДОБАВЛЯТЬСЯ ОБЪЯВЛЕНИЕ
-
-                <div>
-                    <input value={title} onChange={handleTitle} placeholder="Название" />
-                    <input value={body} onChange={handleBody} placeholder="Описание" />
-                    <input value={price} onChange={handlePrice} placeholder="Цена" />
-
-                    <button onClick={addAdv}>Опубликовать</button>
-                </div> */}
             </div>
         </div>
     )
