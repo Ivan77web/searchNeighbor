@@ -1,53 +1,68 @@
-import React, { useState } from "react";
+import React from "react";
+import { useDispatch } from "react-redux";
 import { useTypedSelector } from "../../../hooks/useTypedSelector";
-import { MyInput } from "../../ui/myInput/MyInput";
-import { MyTextarea } from "../../ui/myTextarea/MyTextarea";
+import { actionType } from "../../../types/advDataReducer"
 import cl from "./AboutMe.module.css"
+import { MyInputRedux } from "../../ui/myInputRedux/MyInputRedux";
+import { MyTextareaRedux } from "../../ui/myTextareaRedux/MyTextareaRedux";
 
 const AboutMe: React.FC = () => {
-    const { name, firstName, phone } = useTypedSelector(state => state.userData)
-    const [nameValue, setNameValue] = useState(name)
-    const [firstNameValue, setFirstNameValue] = useState(firstName)
-    const [phoneValue, setPhoneValue] = useState(phone)
-    const [age, setAge] = useState("")
-    const [city, setCity] = useState("")
-    const [aboutMe, setAboutMe] = useState("")
-    const [gender, setGender] = useState("men")
+    const dispatch = useDispatch()
+    const {
+        nameValue,
+        firstNameValue,
+        phoneValue,
+        age,
+        city,
+        aboutMe,
+        myGender,
+    } = useTypedSelector(state => state.advData)
 
-    return(
+    return (
         <div className={cl.aboutMe}>
-                <p className={cl.intro}>Обо мне</p>
+            <p className={cl.intro}>Обо мне</p>
 
-                <div className={cl.oneInput}>
-                    <MyInput width="400px" height="30px" placeholder="Имя" value={nameValue} setValue={setNameValue} />
+            <div className={cl.oneInput}>
+                <MyInputRedux width="400px" height="30px" placeholder="Имя" value={nameValue}  typeForDispatch={actionType.setNameValue}/>
+            </div>
+
+            <div className={cl.oneInput}>
+                <MyInputRedux width="400px" height="30px" placeholder="Фамилия" value={firstNameValue} typeForDispatch={actionType.setFirstNameValue}/>
+            </div>
+
+            <div className={cl.oneInput}>
+                <MyInputRedux width="400px" height="30px" placeholder="Номер телефона" value={phoneValue} typeForDispatch={actionType.setPhoneValue}/>
+            </div>
+
+            <div className={cl.oneInput}>
+                <MyInputRedux width="400px" height="30px" placeholder="Город" value={city} typeForDispatch={actionType.setCity}/>
+            </div>
+
+            <div className={cl.oneInput}>
+                <MyInputRedux width="400px" height="30px" placeholder="Возраст" value={age} typeForDispatch={actionType.setAge}/>
+            </div>
+
+            <div className={cl.choiceGender}>
+                <div 
+                    className={myGender === "men" ? cl.men + " " + cl.active : cl.men} 
+                    onClick={() => dispatch({ type: actionType.setMyGender, payload: "men" })}
+                >
+                    Мужской
                 </div>
 
-                <div className={cl.oneInput}>
-                    <MyInput width="400px" height="30px" placeholder="Фамилия" value={firstNameValue} setValue={setFirstNameValue} />
-                </div>
-
-                <div className={cl.oneInput}>
-                    <MyInput width="400px" height="30px" placeholder="Номер телефона" value={phoneValue} setValue={setPhoneValue} />
-                </div>
-
-                <div className={cl.oneInput}>
-                    <MyInput width="400px" height="30px" placeholder="Город" value={city} setValue={setCity} />
-                </div>
-
-                <div className={cl.oneInput}>
-                    <MyInput width="400px" height="30px" placeholder="Возраст" value={age} setValue={setAge} />
-                </div>
-
-                <div className={cl.choiceGender}>
-                    <div className={gender === "men" ? cl.men + " " + cl.active : cl.men} onClick={() => setGender("men")}>Мужской</div>
-                    <div className={gender === "women" ? cl.women + " " + cl.active : cl.women} onClick={() => setGender("women")}>Женский</div>
-                </div>
-
-                <div className={cl.oneInput}>
-                    <MyTextarea width="400px" height="100px" placeholder="Обо мне" value={aboutMe} setValue={setAboutMe} />
+                <div
+                    className={myGender === "women" ? cl.women + " " + cl.active : cl.women} 
+                    onClick={() => dispatch({ type: actionType.setMyGender, payload: "women" })}
+                >
+                    Женский
                 </div>
             </div>
+
+            <div className={cl.oneInput}>
+                <MyTextareaRedux width="400px" height="100px" placeholder="Обо мне" value={aboutMe} typeForDispatch={actionType.setAboutMe}/>
+            </div>
+        </div>
     )
 }
 
-export {AboutMe}
+export { AboutMe }

@@ -1,58 +1,79 @@
-import React, { useState } from "react";
-import { MyInput } from "../../ui/myInput/MyInput";
-import { MyTextarea } from "../../ui/myTextarea/MyTextarea";
+import React from "react";
+import { useDispatch } from "react-redux";
+import { useTypedSelector } from "../../../hooks/useTypedSelector";
 import { AboutMe } from "../aboutMe/AboutMe";
+import { actionType } from "../../../types/advDataReducer"
 import cl from "./SearchHouse.module.css"
+import { MyInputRedux } from "../../ui/myInputRedux/MyInputRedux";
+import { MyTextareaRedux } from "../../ui/myTextareaRedux/MyTextareaRedux";
 
 const SearchHouse: React.FC = () => {
-    const [typeSearch, setTypeSearch] = useState("flat")
-    const [numberRooms, setNumberRooms] = useState("")
-    const [startArea, setStartArea] = useState("")
-    const [endArea, setEndArea] = useState("")
-    const [startPrice, setStartPrice] = useState("")
-    const [endPrice, setEndPrice] = useState("")
-    const [startPeople, setStartPeople] = useState("")
-    const [endPeople, setEndPeople] = useState("")
-    const [comment, setComment] = useState("")
-
-    const [areaImportant, setAreaImportant] = useState<boolean>(true)
-    const [numberRoomsImportant, setNumberRoomsImportant] = useState<boolean>(true)
-    const [peopleImportant, setPeopleImportant] = useState<boolean>(true)
-    const [priceImportant, setPriceImportant] = useState<boolean>(true)
+    const dispatch = useDispatch()
+    const {
+        typeSearch,
+        numberRooms,
+        startArea,
+        endArea,
+        startPrice,
+        endPrice,
+        startPeople,
+        endPeople,
+        commentInSearchHouse,
+        areaImportant,
+        numberRoomsImportant,
+        peopleImportant,
+        priceImportant,
+    } = useTypedSelector(state => state.advData)
 
     const handleImportant = (state: string) => {
         if (state === "area") {
-            setStartArea("")
-            setEndArea("")
-            setAreaImportant(!areaImportant);
+            dispatch({ type: actionType.setStartArea, payload: "" })
+            dispatch({ type: actionType.setEndArea, payload: "" })
+            dispatch({ type: actionType.setAreaImportant, payload: !areaImportant })
         } else if (state === "rooms") {
-            setNumberRooms("")
-            setNumberRoomsImportant(!numberRoomsImportant);
+            dispatch({ type: actionType.setNumberRooms, payload: "" })
+            dispatch({ type: actionType.setNumberRoomsImportant, payload: !numberRoomsImportant })
         } else if (state === "people") {
-            setStartPeople("")
-            setEndPeople("")
-            setPeopleImportant(!peopleImportant);
+            dispatch({ type: actionType.setStartPeople, payload: "" })
+            dispatch({ type: actionType.setEndPeople, payload: "" })
+            dispatch({ type: actionType.setPeopleImportant, payload: !peopleImportant })
         } else if (state === "price") {
-            setStartPrice("")
-            setEndPrice("")
-            setPriceImportant(!priceImportant);
+            dispatch({ type: actionType.setStartPrice, payload: "" })
+            dispatch({ type: actionType.setEndPrice, payload: "" })
+            dispatch({ type: actionType.setPriceImportant, payload: !priceImportant })
         }
     }
 
     return (
         <div className={cl.searchHouse}>
-
             <div className={cl.aboutMe}>
-                <AboutMe/>
+                <AboutMe />
             </div>
 
             <div className={cl.searchData}>
                 <p className={cl.intro}>Ищу</p>
 
                 <div className={cl.typeSearch}>
-                    <div className={typeSearch === "flat" ? cl.oneTypeSearch + " " + cl.active : cl.oneTypeSearch} onClick={() => setTypeSearch("flat")}>Квартиру</div>
-                    <div className={typeSearch === "room" ? cl.oneTypeSearch + " " + cl.active : cl.oneTypeSearch} onClick={() => setTypeSearch("room")}>Комнату</div>
-                    <div className={typeSearch === "house" ? cl.oneTypeSearch + " " + cl.active : cl.oneTypeSearch} onClick={() => setTypeSearch("house")}>Дом</div>
+                    <div
+                        className={typeSearch === "flat" ? cl.oneTypeSearch + " " + cl.active : cl.oneTypeSearch}
+                        onClick={() => dispatch({ type: actionType.setTypeSearch, payload: "flat" })}
+                    >
+                        Квартиру
+                    </div>
+
+                    <div
+                        className={typeSearch === "room" ? cl.oneTypeSearch + " " + cl.active : cl.oneTypeSearch}
+                        onClick={() => dispatch({ type: actionType.setTypeSearch, payload: "room" })}
+                    >
+                        Комнату
+                    </div>
+
+                    <div
+                        className={typeSearch === "house" ? cl.oneTypeSearch + " " + cl.active : cl.oneTypeSearch}
+                        onClick={() => dispatch({ type: actionType.setTypeSearch, payload: "house" })}
+                    >
+                        Дом
+                    </div>
                 </div>
 
                 <div>
@@ -61,11 +82,25 @@ const SearchHouse: React.FC = () => {
 
                         <div className={cl.buttons}>
                             <div className={cl.oneButton}>
-                                <MyInput width="100px" height="30px" placeholder="От, м" value={areaImportant ? startArea : "-"} setValue={setStartArea} />
+                                <MyInputRedux 
+                                    width="100px" 
+                                    height="30px" 
+                                    placeholder="От, м" 
+                                    value={areaImportant ? startArea : "-"} 
+                                    typeForDispatch={actionType.setStartArea} 
+                                />
                             </div>
+
                             <div className={cl.oneButton}>
-                                <MyInput width="100px" height="30px" placeholder="До, м" value={areaImportant ? endArea : "-"} setValue={setEndArea} />
+                                <MyInputRedux 
+                                    width="100px" 
+                                    height="30px" 
+                                    placeholder="До, м" 
+                                    value={areaImportant ? endArea : "-"} 
+                                    typeForDispatch={actionType.setEndArea}
+                                />
                             </div>
+
                             <div
                                 className={areaImportant ? cl.notImportant : cl.notImportant + " " + cl.notImportantActive}
                                 onClick={() => handleImportant("area")}
@@ -82,7 +117,13 @@ const SearchHouse: React.FC = () => {
                                 <p>Количество комнат</p>
 
                                 <div className={cl.buttons}>
-                                    <MyInput width="50px" height="30px" placeholder="Комнат" value={numberRoomsImportant ? numberRooms : "-"} setValue={setNumberRooms} />
+                                    <MyInputRedux 
+                                        width="50px" 
+                                        height="30px" 
+                                        placeholder="Комнат" 
+                                        value={numberRoomsImportant ? numberRooms : "-"} 
+                                        typeForDispatch={actionType.setNumberRooms}
+                                    />
 
                                     <div
                                         className={numberRoomsImportant ? cl.notImportant : cl.notImportant + " " + cl.notImportantActive}
@@ -102,11 +143,25 @@ const SearchHouse: React.FC = () => {
 
                         <div className={cl.buttons}>
                             <div className={cl.oneButton}>
-                                <MyInput width="100px" height="30px" placeholder="От" value={peopleImportant ? startPeople : "-"} setValue={setStartPeople} />
+                                <MyInputRedux 
+                                    width="100px" 
+                                    height="30px" 
+                                    placeholder="От" 
+                                    value={peopleImportant ? startPeople : "-"} 
+                                    typeForDispatch={actionType.setStartPeople}
+                                />
                             </div>
+
                             <div className={cl.oneButton}>
-                                <MyInput width="100px" height="30px" placeholder="До" value={peopleImportant ? endPeople : "-"} setValue={setEndPeople} />
+                                <MyInputRedux 
+                                    width="100px" 
+                                    height="30px" 
+                                    placeholder="До" 
+                                    value={peopleImportant ? endPeople : "-"} 
+                                    typeForDispatch={actionType.setEndPeople}
+                                />
                             </div>
+
                             <div
                                 className={peopleImportant ? cl.notImportant : cl.notImportant + " " + cl.notImportantActive}
                                 onClick={() => handleImportant("people")}
@@ -121,11 +176,25 @@ const SearchHouse: React.FC = () => {
 
                         <div className={cl.buttons}>
                             <div className={cl.oneButton}>
-                                <MyInput width="100px" height="30px" placeholder="От, руб" value={priceImportant ? startPrice : "-"} setValue={setStartPrice} />
+                                <MyInputRedux 
+                                    width="100px" 
+                                    height="30px" 
+                                    placeholder="От, руб" 
+                                    value={priceImportant ? startPrice : "-"} 
+                                    typeForDispatch={actionType.setStartPrice}
+                                />
                             </div>
+
                             <div className={cl.oneButton}>
-                                <MyInput width="100px" height="30px" placeholder="До, руб" value={priceImportant ? endPrice : "-"} setValue={setEndPrice} />
+                                <MyInputRedux 
+                                    width="100px" 
+                                    height="30px" 
+                                    placeholder="До, руб" 
+                                    value={priceImportant ? endPrice : "-"} 
+                                    typeForDispatch={actionType.setEndPrice}
+                                />
                             </div>
+
                             <div
                                 className={priceImportant ? cl.notImportant : cl.notImportant + " " + cl.notImportantActive}
                                 onClick={() => handleImportant("price")}
@@ -136,7 +205,13 @@ const SearchHouse: React.FC = () => {
                     </div>
 
                     <div className={cl.oneInputWithWidth}>
-                        <MyTextarea width="400px" height="100px" placeholder="Комментарий" value={comment} setValue={setComment} />
+                        <MyTextareaRedux 
+                            width="400px" 
+                            height="100px" 
+                            placeholder="Комментарий" 
+                            value={commentInSearchHouse} 
+                            typeForDispatch={actionType.setCommentInSearchHouse}
+                        />
                     </div>
                 </div>
             </div>

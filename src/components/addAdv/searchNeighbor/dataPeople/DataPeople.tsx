@@ -1,28 +1,34 @@
-import React, { useState } from "react";
-import { MyInput } from "../../../ui/myInput/MyInput";
-import { MyTextarea } from "../../../ui/myTextarea/MyTextarea";
+import React from "react";
+import { useDispatch } from "react-redux";
+import { useTypedSelector } from "../../../../hooks/useTypedSelector";
 import { AboutMe } from "../../aboutMe/AboutMe";
+import { actionType } from "../../../../types/advDataReducer"
 import cl from "./DataPeople.module.css"
+import { MyInputRedux } from "../../../ui/myInputRedux/MyInputRedux";
+import { MyTextareaRedux } from "../../../ui/myTextareaRedux/MyTextareaRedux";
 
 const DataPeople: React.FC = () => {
-    const [gender, setGender] = useState("men")
-    const [searchAgeStart, setSearchAgeStart] = useState("")
-    const [searchAgeEnd, setSearchAgeEnd] = useState("")
-    const [ageImportant, setAgeImportant] = useState<boolean>(true)
-    const [animals, setAnimals] = useState(false)
-    const [children, setChildren] = useState(false)
-    const [badHabits, setBadHabits] = useState(false)
-    const [comment, setComment] = useState("")
+    const dispatch = useDispatch();
+    const {
+        genderNeighbor,
+        searchAgeStart,
+        searchAgeEnd,
+        ageImportant,
+        animals,
+        children,
+        badHabits,
+        commentInSearchNeighbor
+    } = useTypedSelector(state => state.advData)
 
     const handleImportant = (state: string) => {
         if (state === "age") {
-            setSearchAgeStart("")
-            setSearchAgeEnd("")
-            setAgeImportant(!ageImportant);
+            dispatch({ type: actionType.setSearchAgeStart, payload: "" })
+            dispatch({ type: actionType.setSearchAgeEnd, payload: "" })
+            dispatch({ type: actionType.setAgeImportant, payload: !ageImportant })
         }
     }
 
-    return(
+    return (
         <div className={cl.dataPeople}>
 
             <div className={cl.aboutMe}>
@@ -33,20 +39,52 @@ const DataPeople: React.FC = () => {
                 <p className={cl.intro}>Кого Вы ищете?</p>
 
                 <div className={cl.choiceGender}>
-                    <div className={gender === "men" ? cl.men + " " + cl.active : cl.men} onClick={() => setGender("men")}>Мужской</div>
-                    <div className={gender === "women" ? cl.women + " " + cl.active : cl.women} onClick={() => setGender("women")}>Женский</div>
-                    <div className={gender === "anyGender" ? cl.anyGender + " " + cl.active : cl.anyGender} onClick={() => setGender("anyGender")}>Не важно</div>
+                    <div 
+                        className={genderNeighbor === "men" ? cl.men + " " + cl.active : cl.men} 
+                        onClick={() => dispatch({ type: actionType.setGenderNeighbor, payload: "men" })}
+                    >
+                        Мужской
+                    </div>
+
+                    <div 
+                        className={genderNeighbor === "women" ? cl.women + " " + cl.active : cl.women}
+                        onClick={() => dispatch({ type: actionType.setGenderNeighbor, payload: "women" })}
+                    >
+                        Женский
+                    </div>
+
+                    <div 
+                        className={genderNeighbor === "anyGender" ? cl.anyGender + " " + cl.active : cl.anyGender} 
+                        onClick={() => dispatch({ type: actionType.setGenderNeighbor, payload: "anyGender" })}
+                    >
+                        Не важно
+                    </div>
                 </div>
 
                 <div className={cl.oneInputWithWidth}>
                     <p>Возраст</p>
+
                     <div className={cl.buttons}>
                         <div className={cl.oneButton}>
-                            <MyInput width="100px" height="30px" placeholder="От" value={ageImportant ? searchAgeStart : "-"} setValue={setSearchAgeStart} />
+                            <MyInputRedux 
+                                width="100px" 
+                                height="30px" 
+                                placeholder="От" 
+                                value={ageImportant ? searchAgeStart : "-"} 
+                                typeForDispatch={actionType.setSearchAgeStart} 
+                            />
                         </div>
+
                         <div className={cl.oneButton}>
-                            <MyInput width="100px" height="30px" placeholder="До" value={ageImportant ? searchAgeEnd : "-"} setValue={setSearchAgeEnd} />
+                            <MyInputRedux 
+                                width="100px" 
+                                height="30px" 
+                                placeholder="До" 
+                                value={ageImportant ? searchAgeEnd : "-"} 
+                                typeForDispatch={actionType.setSearchAgeEnd} 
+                            />
                         </div>
+
                         <div
                             className={ageImportant ? cl.notImportant : cl.notImportant + " " + cl.notImportantActive}
                             onClick={() => handleImportant("age")}
@@ -58,23 +96,47 @@ const DataPeople: React.FC = () => {
 
                 <div className={cl.checkBoxes}>
                     <div className={cl.oneCheckBox}>
-                        <input className={cl.checkBox} type="checkBox" checked={animals} onChange={() => setAnimals(!animals)}/> 
+                        <input 
+                            className={cl.checkBox} 
+                            type="checkBox" 
+                            checked={animals} 
+                            onChange={() => dispatch({ type: actionType.setAnimals, payload: !animals })} 
+                        />
+
                         <p>С животными</p>
                     </div>
 
                     <div className={cl.oneCheckBox}>
-                    <input className={cl.checkBox} type="checkBox" checked={children} onChange={() => setChildren(!children)}/> 
+                        <input 
+                            className={cl.checkBox} 
+                            type="checkBox" 
+                            checked={children} 
+                            onChange={() => dispatch({ type: actionType.setChildren, payload: !children })} 
+                        />
+
                         <p>С детьми</p>
                     </div>
 
                     <div className={cl.oneCheckBox}>
-                    <input className={cl.checkBox} type="checkBox" checked={!badHabits} onChange={() => setBadHabits(!badHabits)}/> 
+                        <input 
+                            className={cl.checkBox} 
+                            type="checkBox" 
+                            checked={!badHabits} 
+                            onChange={() => dispatch({ type: actionType.setBadHabits, payload: !badHabits })} 
+                        />
+
                         <p>Без вредных привычек</p>
-                    </div>   
+                    </div>
                 </div>
 
                 <div className={cl.oneInputWithWidth}>
-                        <MyTextarea width="400px" height="100px" placeholder="Комментарий" value={comment} setValue={setComment} />
+                    <MyTextareaRedux 
+                        width="400px" 
+                        height="100px" 
+                        placeholder="Комментарий" 
+                        value={commentInSearchNeighbor} 
+                        typeForDispatch={actionType.setCommentInSearchNeighbor} 
+                    />
                 </div>
 
             </div>
@@ -82,4 +144,4 @@ const DataPeople: React.FC = () => {
     )
 }
 
-export {DataPeople}
+export { DataPeople }

@@ -1,10 +1,12 @@
 import React from "react";
-import { IMyTextareaProps } from "../../../types/myTextarea";
-import cl from "./MyTextarea.module.css"
+import { useDispatch } from "react-redux";
+import { IMyTextareaProps } from "../../../types/myTextareaRedux";
+import cl from "./MyTextareaRedux.module.css"
 
-const MyTextarea: React.FC<IMyTextareaProps> = ({ width, height, placeholder, value, setValue }) => {
+const MyTextareaRedux: React.FC<IMyTextareaProps> = ({ width, height, placeholder, value, typeForDispatch }) => {
+    const dispatch = useDispatch()
     const handleChange: React.ChangeEventHandler<HTMLTextAreaElement> = (e) => {
-        setValue(e.target.value)
+        dispatch({type: typeForDispatch, payload: e.target.value })
     }
 
     return (
@@ -21,4 +23,4 @@ const MyTextarea: React.FC<IMyTextareaProps> = ({ width, height, placeholder, va
     )
 }
 
-export { MyTextarea }
+export { MyTextareaRedux }

@@ -1,7 +1,4 @@
-import React, { useState } from "react";
-import { MyInput } from "../../ui/myInput/MyInput";
-import { MyTextarea } from "../../ui/myTextarea/MyTextarea";
-import { AboutMe } from "../aboutMe/AboutMe";
+import React from "react";
 import { DataObject } from "./dataObject/DataObject";
 import { DataPeople } from "./dataPeople/DataPeople";
 import cl from "./SearchNeighbor.module.css"

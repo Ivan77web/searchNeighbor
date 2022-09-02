@@ -1,8 +1,4 @@
-.addAdv{
-    width: 100%;
-}
-
-.typeAdv{
+.buttonsOfType{
     position: relative;
     width: 100%;
     height: 60px;
@@ -28,21 +24,6 @@
     text-align: center;
     cursor: pointer;
     color: rgb(102, 102, 102);
-}
-
-.searchNeighbor, .searchHouse {
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;  
-    -khtml-user-select: none;   
-    -moz-user-select: none;     
-    -ms-user-select: none;      
-    user-select: none;                                          
-}
-
-.buttonAdd{
-    margin-top: 30px;
-    margin-bottom: 30px;
-    cursor: pointer;
 }
 
 .active{
