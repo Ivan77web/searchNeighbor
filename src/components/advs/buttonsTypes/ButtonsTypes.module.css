@@ -4,6 +4,7 @@
     height: 60px;
     display: flex;
     margin-bottom: 10px;
+    cursor: pointer;
 }
 
 .searchNeighbor{

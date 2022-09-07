@@ -1,0 +1,84 @@
+.card{
+    position: relative;
+    width: calc(100% - 4px);
+    border: 2px solid rgb(163, 132, 132);
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border-radius: 10px;
+    font-size: 14px;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;  
+    -khtml-user-select: none;   
+    -moz-user-select: none;     
+    -ms-user-select: none;      
+    user-select: none;   
+}
+
+.cardClose{
+    height: 100px;
+}
+
+.data{
+    height: 70px;
+    margin-top: 15px;
+}
+
+.partOfData{
+    margin: 0;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.open{
+    position: absolute;
+    right: 10px;
+    top: calc(50% - 15px);
+    top: 10px;
+    width: 30px;
+    height: 30px;
+    background: rgb(163, 132, 132);
+    border-radius: 100%;
+    color: white;
+    cursor: pointer;
+}
+
+.openActive{
+    transform: rotate(180deg);
+}
+
+.cardOpen{
+    height: 300px;
+}
+
+.dataOpen{
+    position: relative;
+    display: flex;
+    margin-left: 10px;
+}
+
+.dataSearcher{
+    width: 50%;
+}
+
+.dataObject{
+    width: 50%;
+}
+
+.aboutMe, .comment{
+    width: 90%;
+    height: 180px;
+    margin-top: 10px;
+    overflow-y: scroll;
+}
+
+.comment{
+    height: 118px;
+}
+
+.aboutMe::-webkit-scrollbar, .comment::-webkit-scrollbar {
+    width: 0;
+}
+
+.helpWord{
+    color: rgb(122, 122, 122);
+}

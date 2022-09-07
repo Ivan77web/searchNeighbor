@@ -47,7 +47,10 @@ const AddAdv: React.FC = () => {
                     if (searchAgeStart && searchAgeEnd || !ageImportant) {
                         if (typeObject === "flat" || typeObject === "house") {
                             if (area && year && rooms && price && productPhoto) {
-                                await setDoc(doc(firestore, "allAdvs", `adv_${user.uid}_${advId}`), {
+                                await setDoc(doc(firestore, "allAdvsWithPhotos", `adv_${user.uid}_${advId}`), {
+                                    userId: user.uid,
+                                    advId: advId,
+                                    typeAdv: typeAdv,
                                     nameValue: nameValue,
                                     firstNameValue: firstNameValue,
                                     phoneValue: phoneValue,
@@ -83,7 +86,10 @@ const AddAdv: React.FC = () => {
                             }
                         } else if (typeObject === "room") {
                             if (area && year && price && productPhoto) {
-                                await setDoc(doc(firestore, "allAdvs", `adv_${user.uid}_${advId}`), {
+                                await setDoc(doc(firestore, "allAdvsWithPhotos", `adv_${user.uid}_${advId}`), {
+                                    userId: user.uid,
+                                    advId: advId,
+                                    typeAdv: typeAdv,
                                     nameValue: nameValue,
                                     firstNameValue: firstNameValue,
                                     phoneValue: phoneValue,
@@ -129,7 +135,10 @@ const AddAdv: React.FC = () => {
                             (startPrice && endPrice || !priceImportant) &&
                             (numberRooms || !numberRoomsImportant)
                         ) {
-                            await setDoc(doc(firestore, "allAdvs", `adv_${user.uid}_${advId}`), {
+                            await setDoc(doc(firestore, "allAdvsWithoutPhotos", `adv_${user.uid}_${advId}`), {
+                                userId: user.uid,
+                                advId: advId,
+                                typeAdv: typeAdv,
                                 nameValue: nameValue,
                                 firstNameValue: firstNameValue,
                                 phoneValue: phoneValue,
@@ -162,7 +171,10 @@ const AddAdv: React.FC = () => {
                             (startPeople && endPeople || !peopleImportant) &&
                             (startPrice && endPrice || !priceImportant)
                         ) {
-                            await setDoc(doc(firestore, "allAdvs", `adv_${user.uid}_${advId}`), {
+                            await setDoc(doc(firestore, "allAdvsWithoutPhotos", `adv_${user.uid}_${advId}`), {
+                                userId: user.uid,
+                                advId: advId,
+                                typeAdv: typeAdv,
                                 nameValue: nameValue,
                                 firstNameValue: firstNameValue,
                                 phoneValue: phoneValue,
@@ -179,7 +191,7 @@ const AddAdv: React.FC = () => {
                                 endPeople: endPeople,
                                 commentInSearchHouse: commentInSearchHouse,
                                 areaImportant: areaImportant,
-                                numberRoomsImportant: numberRoomsImportant,
+                                // numberRoomsImportant: numberRoomsImportant,
                                 peopleImportant: peopleImportant,
                                 priceImportant: priceImportant
                             });

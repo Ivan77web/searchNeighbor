@@ -5,13 +5,14 @@ import { Link } from "react-router-dom";
 
 const AdvCard: React.FC<IAdsCardProps> = ({ adv }) => {
     return (
-        <Link to={`/advs/${adv.idOwner}_${adv.advId}`}>
-            <div className={cl.advCard}>
-                {adv.title}
-                {adv.body}
-                {adv.price}
-            </div>
-        </Link>
+        <div/>
+        // <Link to={`/advs/${adv.idOwner}_${adv.advId}`}>
+        //     <div className={cl.advCard}>
+        //         {adv.title}
+        //         {adv.body}
+        //         {adv.price}
+        //     </div>
+        // </Link>
     )
 }
 

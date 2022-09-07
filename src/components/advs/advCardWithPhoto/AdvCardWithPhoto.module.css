@@ -1,0 +1,18 @@
+.card{
+    width: 300px;
+    height: 500px;
+    margin: 10px;
+    padding: 5px;
+    border: 2px solid rgb(163, 132, 132);
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.data{
+    height: 300px;
+    overflow-y: scroll;
+}
+
+.data::-webkit-scrollbar {
+    width: 0;
+}
