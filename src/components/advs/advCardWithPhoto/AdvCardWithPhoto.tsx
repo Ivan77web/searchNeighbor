@@ -8,25 +8,25 @@ const AdvCardWithPhoto: React.FC<IAdvCardWithPhotoProps> = ({ adv }) => {
     const [activePhoto, setActivePhoto] = useState<number>(0)
 
     return (
-        // <Link to={}>
-            <div className={cl.card}>
-                <PhotoBlock adv={adv} activePhoto={activePhoto} setActivePhoto={setActivePhoto} />
+        <div className={cl.card}>
+            <PhotoBlock adv={adv} activePhoto={activePhoto} setActivePhoto={setActivePhoto} />
 
+            <Link to={`/advs/${adv.userId}_${adv.advId}`}>
                 <div className={cl.data}>
                     <p>Город: {adv.city}</p>
 
                     {
                         adv.typeObject === "flat"
                             ?
-                            `${adv.rooms}-комнатная квартира, ${adv.area} м`
+                            `${adv.rooms}-комнатная квартира, ${adv.area} м²`
                             :
                             adv.typeObject === "house"
                                 ?
-                                `${adv.rooms}-комнатный дом, ${adv.area} м`
+                                `${adv.rooms}-комнатный дом, ${adv.area} м²`
                                 :
                                 adv.typeObject === "room"
                                     ?
-                                    `Комната, ${adv.area} м`
+                                    `Комната, ${adv.area} м²`
                                     :
                                     ""
                     }
@@ -62,8 +62,8 @@ const AdvCardWithPhoto: React.FC<IAdvCardWithPhotoProps> = ({ adv }) => {
 
                     <p>Цена: {adv.price} руб.</p>
                 </div>
-            </div>
-        // </Link>
+            </Link>
+        </div>
     )
 }
 

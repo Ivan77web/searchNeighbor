@@ -1,0 +1,157 @@
+.data{
+    position: relative;
+    display: flex;
+}
+
+.photos{
+    position: absolute;
+    width: 45%;
+    height: 500px;
+    left: 0;
+    margin-right: 10px;
+}
+
+.blockData{
+    position: absolute;
+    width: 50%;
+    right: 0;
+}
+
+.intro{
+    display: flex;
+    height: 80px;
+
+    position: relative;
+}
+
+.mainText{
+    position: absolute;
+}
+
+.introText{
+    line-height: 0px;
+}
+
+.buttons{
+    position: absolute;
+    right: 0;
+    display: flex;
+    height: 80px;
+    margin-top: 25px;
+    font-size: 14px;
+}
+
+.favorites{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.phone{
+    margin-left: 10px;
+    margin-right: 10px; 
+}
+
+.oneData{
+    line-height: 0;
+    display: flex;
+    height: 30px;
+}
+
+.requirements{
+    display: flex; 
+    margin-top: 5px;  
+    margin-bottom: 5px;
+}
+
+.oneRequirements{
+    width: fit-content;
+    height: 30px;
+    line-height: 30px;
+    border: 1px solid rgb(122, 122, 122);
+    color: rgb(122, 122, 122);;
+    border-radius: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+    margin-right: 10px;
+}
+
+.comment{
+    position: relative;
+    margin-top: 6px;
+    height: 100px;
+}
+
+.introHelp{
+    position: absolute;
+    width: 100px;
+    color: rgb(122, 122, 122);
+    margin: 0;
+}
+
+.textArea{
+    position: absolute;
+    width: calc(100% - 100px);
+    height: 100px;
+    top: 0;
+    right: 0;
+    max-height: 100px;
+    overflow-y: scroll;
+}
+
+.textArea::-webkit-scrollbar{
+    width: 0;
+}
+
+.introHelpAboutMe{
+    position: absolute;
+    width: 60px;
+    color: rgb(122, 122, 122);
+    margin: 0;
+}
+
+.textAreaAboutMe{
+    position: absolute;
+    width: calc(100% - 60px);
+    height: 100px;
+    top: 0;
+    right: 0;
+    max-height: 100px;
+    overflow-y: scroll;
+}
+
+.textAreaAboutMe::-webkit-scrollbar{
+    width: 0;
+}
+
+.phone{
+    display: flex;
+}
+
+.visibilityText{
+    cursor: pointer;
+}
+
+.introHelpForNeighbor{
+    position: absolute;
+    width: 120px;
+    color: rgb(122, 122, 122);
+    margin: 0;
+}
+
+.textAreaForNeighbor{
+    position: absolute;
+    width: calc(100% - 120px);
+    height: 100px;
+    top: 0;
+    right: 0;
+    max-height: 100px;
+    overflow-y: scroll;
+}
+
+.textAreaForNeighbor::-webkit-scrollbar{
+    width: 0;
+}
+
+.helpText{
+    color: rgb(122, 122, 122);
+}

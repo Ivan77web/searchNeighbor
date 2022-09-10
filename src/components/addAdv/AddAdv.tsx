@@ -158,7 +158,7 @@ const AddAdv: React.FC = () => {
                                 areaImportant: areaImportant,
                                 numberRoomsImportant: numberRoomsImportant,
                                 peopleImportant: peopleImportant,
-                                priceImportant: priceImportant
+                                priceImportant: priceImportant,
                             });
 
                             dispatch({ type: actionType.REMOVE })
@@ -191,9 +191,8 @@ const AddAdv: React.FC = () => {
                                 endPeople: endPeople,
                                 commentInSearchHouse: commentInSearchHouse,
                                 areaImportant: areaImportant,
-                                // numberRoomsImportant: numberRoomsImportant,
                                 peopleImportant: peopleImportant,
-                                priceImportant: priceImportant
+                                priceImportant: priceImportant,
                             });
 
                             dispatch({ type: actionType.REMOVE })
