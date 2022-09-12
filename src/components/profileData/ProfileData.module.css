@@ -1,6 +1,5 @@
 .profileData{
     width: 100%;
-    /* margin-top: 10px; */
     background: rgb(247, 241, 241);
     border-radius: 10px;
 }
@@ -9,35 +8,28 @@
     position: relative;
     height: 70px;
     display: flex;
-    /* background: #000; */
-
     border-bottom: 3px solid white;
 }
 
-.photo{
-    position: absolute;
-    width: 50px;
-    height: 50px;
-    top: 10px;
-    margin-left: 10px;
-    border-radius: 100%;
-    background: rgb(68, 68, 68);
+.nameAndPhone{
+    width: 220px;
+    margin-left: 20px;
+    margin-top: 15px;
 }
 
-.name{
-    width: 220px;
-    /* background: yellow; */
-    line-height: 70px;
-    margin-left: 70px;
+.name, .phone{
+    height: 20px;
 }
 
 .correct{
     position: absolute;
-    width: 10px;
-    height: 10px;
-    top: 30px;
-    right: 10px;
-    background: #000;
+    width: 30px;
+    height: 30px;
+    top: 20px;
+    right: 20px;
+    text-align: center;
+    line-height: 30px;
+    cursor: pointer;
 }
 
 .menu{
@@ -47,4 +39,13 @@
 
 .partMenu{
     cursor: pointer;
+}
+
+.notCopy{
+    -webkit-touch-callout: none; 
+    -webkit-user-select: none;   
+    -khtml-user-select: none;    
+    -moz-user-select: none;      
+    -ms-user-select: none;       
+    user-select: none;
 }

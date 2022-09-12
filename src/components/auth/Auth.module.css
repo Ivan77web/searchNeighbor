@@ -24,9 +24,40 @@
     font-size: 20px;
 }
 
-.nameInput, .firstNameInput, .phoneInput{
+.nameInput, .firstNameInput, .phoneInput, .gender{
     margin-top: 10px;
     margin-bottom: 10px;
+}
+
+.gender{
+    position: relative;
+    display: flex;
+    height: 38px;
+}
+
+.men, .women{
+    position: absolute;
+    width: 48%;
+    height: 36px;
+    line-height: 36px;
+    text-align: center;
+    border: 1px solid grey;
+    border-radius: 10px;
+    cursor: pointer;
+    color: rgb(85, 85, 85);
+}
+
+.men{
+    left: 0;
+}
+
+.women{
+    right: 0;
+}
+
+.genderActive{
+    color: black;
+    background: rgb(236, 236, 236);
 }
 
 .data{

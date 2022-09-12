@@ -1,6 +1,7 @@
 import { getStorage, getDownloadURL, ref } from "@firebase/storage";
 import React, { useEffect, useState } from "react";
 import { IPhotoBlockAdvProps } from "../../../../types/photoBlockCard";
+import { Loader } from "../../../ui/loader/Loader";
 import cl from "./PhotoBlock.module.css"
 
 const PhotoBlock: React.FC<IPhotoBlockAdvProps> = ({adv, activePhoto, setActivePhoto}) => {
@@ -40,7 +41,7 @@ const PhotoBlock: React.FC<IPhotoBlockAdvProps> = ({adv, activePhoto, setActiveP
 
     if (srcArr.length !== adv.numberOfPhotos) {
         return (
-            <div>LOADING</div>
+            <Loader/>
         )
     } else {
         return (

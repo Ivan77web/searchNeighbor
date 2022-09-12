@@ -1,6 +1,7 @@
 import { getStorage, getDownloadURL, ref } from "firebase/storage";
 import React, { useEffect, useState } from "react";
 import { IPhotoBlockProps } from "../../../types/PhotoBlockInPage";
+import { Loader } from "../../ui/loader/Loader";
 import cl from "./PhotoBlock.module.css"
 
 const PhotoBlock: React.FC<IPhotoBlockProps> = ({ number, userId, advId }) => {
@@ -41,7 +42,7 @@ const PhotoBlock: React.FC<IPhotoBlockProps> = ({ number, userId, advId }) => {
 
     if (srcArr.length !== number) {
         return (
-            <div>LOADING</div>
+            <Loader/>
         )
     }
 
@@ -72,6 +73,7 @@ const PhotoBlock: React.FC<IPhotoBlockProps> = ({ number, userId, advId }) => {
                         {
                             srcArr.map(src =>
                                 <img
+                                    key={src}
                                     className={cl.smallImg}
                                     src={src}
                                 />

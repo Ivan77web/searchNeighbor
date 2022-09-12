@@ -13,6 +13,7 @@ import { Favorites } from "./profile/favorites/Favorites";
 import { MyComments } from "./profile/myComments/MyComments";
 
 import { useCollectionData } from "react-firebase-hooks/firestore";
+import { Loader } from "./ui/loader/Loader";
 
 const AppRouter = () => {
     const { auth, firestore } = useContext(Context);
@@ -34,7 +35,7 @@ const AppRouter = () => {
 
     if (loading) {
         return (
-            <div>LOADING</div>
+            <Loader/>
         )
     } else {
         return isUser ?

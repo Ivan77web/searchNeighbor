@@ -3,7 +3,9 @@ export interface IDefaultStateDataUser {
     firstName: string;
     phone: string;
     id: string;
-    email: string
+    email: string;
+    gender: string;
+    photo: string;
 }
 
 export interface IAction {

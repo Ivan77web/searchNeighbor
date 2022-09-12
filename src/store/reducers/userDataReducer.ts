@@ -5,7 +5,9 @@ const defaultState: IDefaultStateDataUser = {
     firstName: "",
     phone: "",
     id: "",
-    email: ""
+    email: "",
+    gender: "",
+    photo: "",
 }
 
 export const userDataReducer = (state: IDefaultStateDataUser = defaultState, action: IAction) => {
@@ -16,7 +18,9 @@ export const userDataReducer = (state: IDefaultStateDataUser = defaultState, act
                 firstName: action.payload.firstName,
                 phone: action.payload.phone,
                 id: action.payload.id,
-                email: action.payload.email
+                email: action.payload.email,
+                gender: action.payload.gender,
+                photo: action.payload.photo
             }
         default:
             return state

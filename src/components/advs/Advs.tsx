@@ -8,6 +8,7 @@ import { ButtonsTypes } from "./buttonsTypes/ButtonsTypes";
 import { FiltersAdvs } from "./filters/FiltersAdvs";
 import { AdvsWithPhotos } from "./advsWithPhotos/AdvsWithPhotos";
 import { AdvsWithoutPhotos } from "./advsWithoutPhotos/AdvsWithoutPhotos";
+import { Loader } from "../ui/loader/Loader";
 
 
 const Advs: React.FC = () => {
@@ -41,7 +42,7 @@ const Advs: React.FC = () => {
         )
     } else {
         return (
-            <div>LOADING</div>
+            <Loader/>
         )
     }
 }

@@ -26,6 +26,8 @@ function App() {
             id: oneUser.id,
             phone: oneUser.phone,
             email: oneUser.email,
+            photo: oneUser.photo,
+            gender: oneUser.gender
           }
   
           dispatch({type: "addUserData", payload: userData})

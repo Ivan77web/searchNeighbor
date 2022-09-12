@@ -1,15 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-// import { useTypedSelector } from "../../../../../hooks/useTypedSelector";
 import { actionType } from "../../../../../types/advDataReducer"
 import cl from "./PhotoBlock.module.css"
 
 const PhotoBlock: React.FC = () => {
     const dispatch = useDispatch()
-    // const { productPhoto } = useTypedSelector(state => state.advData)
-
-    // const [productPhoto, setProductPhoto] = useState<File | null>();
-
     const [input, setInput] = useState<HTMLInputElement>();
     const [urlMainImg, setUrlMainImg] = useState<string>("");
 
@@ -22,7 +17,6 @@ const PhotoBlock: React.FC = () => {
             const curFiles = input.files;
             
             if (curFiles) {
-                // setProductPhoto(curFiles[0]);
                 dispatch({type: actionType.setProductPhoto, payload: curFiles })
             }
 

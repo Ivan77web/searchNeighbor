@@ -1,0 +1,87 @@
+.correctData{
+    height: 320px;
+    width: 100%;
+    position: relative;
+    border-bottom: 3px solid white;
+}
+
+.input{
+    width: fit-content;
+    height: fit-content;
+    margin: 0 auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.genders{
+    position: relative;
+    width: 310px;
+    height: 30px;
+    display: flex;
+    margin: 0 auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.gender{
+    position: absolute;
+    width: 150px;
+    height: 30px;
+    border-radius: 5px;
+    border: 1px solid grey;
+    color: grey;
+    line-height: 30px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.men{
+    left: 0;
+}
+
+.women{
+    right: 0;
+}
+
+.activeGender{
+    color: black;
+    border: 1px solid black;
+}
+
+.photoBlock{
+    width: 310px;
+    height: 100px;
+    margin: 0 auto;
+    text-align: center;
+    line-height: 100px;
+}
+
+.buttons{
+    position: relative;
+    display: flex;
+    width: 310px;
+    margin: 0 auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.button{
+    position: absolute;
+}
+
+.cancel{
+    left: 0;
+}
+
+.save{
+    right: 0;
+}
+
+.notCopy{
+    -webkit-touch-callout: none; 
+    -webkit-user-select: none;   
+    -khtml-user-select: none;    
+    -moz-user-select: none;      
+    -ms-user-select: none;       
+    user-select: none;
+}
