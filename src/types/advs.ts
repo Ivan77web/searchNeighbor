@@ -1,11 +1,3 @@
-// export interface IAdv {
-//     advId: number;
-//     body: string;
-//     idOwner: string;
-//     price: string;
-//     title: string
-// }
-
 export type IAdv = IAdvSearchWithPhotos | IAdvSearchWithoutPhotos;
 
 export interface IAdvSearchWithPhotos {

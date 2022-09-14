@@ -1,7 +1,6 @@
 .profile{
     position: relative;
     width: 100%;
-    /* min-height: calc(100vh - 50px); */
     background: red;
 }
 
@@ -18,6 +17,5 @@
 .outlet{
     position: absolute;
     width: 70%;
-    background: blue;
     right: 0;
 }

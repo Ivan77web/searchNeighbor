@@ -9,19 +9,25 @@ import { FiltersAdvs } from "./filters/FiltersAdvs";
 import { AdvsWithPhotos } from "./advsWithPhotos/AdvsWithPhotos";
 import { AdvsWithoutPhotos } from "./advsWithoutPhotos/AdvsWithoutPhotos";
 import { Loader } from "../ui/loader/Loader";
+import { useTypedSelector } from "../../hooks/useTypedSelector";
+import { IFavorites } from "../../types/AdvPage";
 
 
 const Advs: React.FC = () => {
     const { firestore } = useContext(Context);
+    const {id} = useTypedSelector(state => state.userData)
     const [typeAdvs, setTypeAdvs] = useState("searchHouse")
-    const [allAdvsWithPhotos, loading_one] = useCollectionData<IAdvSearchWithPhotos>(
+    const [allAdvsWithPhotos] = useCollectionData<IAdvSearchWithPhotos>(
         firestore.collection("allAdvsWithPhotos")
     )
-    const [allAdvsWithoutPhotos, loading_two] = useCollectionData<IAdvSearchWithoutPhotos>(
+    const [allAdvsWithoutPhotos] = useCollectionData<IAdvSearchWithoutPhotos>(
         firestore.collection("allAdvsWithoutPhotos")
     )
+    const [favorites, loadingFavorites] = useCollectionData<IFavorites>(
+        firestore.collection(`/favorites_${id}`)
+    )
 
-    if (allAdvsWithPhotos && allAdvsWithoutPhotos) {
+    if (allAdvsWithPhotos && allAdvsWithoutPhotos && !loadingFavorites) {
         return (
             <div className={cl.advs}>
                 <div className="container">
@@ -35,7 +41,7 @@ const Advs: React.FC = () => {
                             ?
                             <AdvsWithPhotos allAdvsWithPhotos={allAdvsWithPhotos}/>
                             :
-                            <AdvsWithoutPhotos allAdvsWithoutPhotos={allAdvsWithoutPhotos} />
+                            <AdvsWithoutPhotos allAdvsWithoutPhotos={allAdvsWithoutPhotos} favorites={favorites}/>
                     }
                 </div>
             </div>

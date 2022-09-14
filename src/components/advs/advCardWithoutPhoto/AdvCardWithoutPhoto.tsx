@@ -1,10 +1,37 @@
-import React, { useState } from "react";
+import { setDoc, doc, deleteDoc } from "firebase/firestore";
+import React, { useContext, useEffect, useState } from "react";
+import { Context } from "../../..";
+import { useTypedSelector } from "../../../hooks/useTypedSelector";
 import { IAdvCardWithoutPhoto } from "../../../types/AdvCardWithoutPhoto";
 import { Arrow } from "../../icons/arrow/Arrow";
+import { MyButton } from "../../ui/myButton/MyButton";
 import cl from "./AdvCardWithoutPhoto.module.css"
 
-const AdvCardWithoutPhoto: React.FC<IAdvCardWithoutPhoto> = ({ adv }) => {
-    const [size, setSize] = useState<number>(0)
+const AdvCardWithoutPhoto: React.FC<IAdvCardWithoutPhoto> = ({ adv, favorites }) => {
+    const { firestore } = useContext(Context);
+    const { id } = useTypedSelector(state => state.userData)
+    const [size, setSize] = useState<number>(0);
+    const [isFavorite, setIsFavorite] = useState<boolean>(false);
+    const [visibilityPhone, setVisibilityPhone] = useState<boolean>(false)
+
+    const addInFavorites = async () => {
+        await setDoc(doc(firestore, `favorites_${id}`, `adv_${adv.advId}`), {
+            advId: adv.advId
+        });
+    }
+
+    const deleteFavorites = async () => {
+        await deleteDoc(doc(firestore, `favorites_${id}`, `adv_${adv.advId}`));
+        setIsFavorite(false)
+    }
+
+    useEffect(() => {
+        favorites?.map(elem => {
+            if (adv.advId === elem.advId) {
+                setIsFavorite(true);
+            }
+        })
+    }, [favorites])
 
     if (size === 0) {
         return (
@@ -33,8 +60,6 @@ const AdvCardWithoutPhoto: React.FC<IAdvCardWithoutPhoto> = ({ adv }) => {
                                         `Ищет: дом`
                                     :
                                     "Ищет: комнату"
-
-
                         }
 
                         {
@@ -56,8 +81,44 @@ const AdvCardWithoutPhoto: React.FC<IAdvCardWithoutPhoto> = ({ adv }) => {
                         }
                     </p>
 
-                    <div className={cl.open} onClick={() => setSize(1)}>
-                        <Arrow />
+                    <div className={cl.buttons}>
+                        <div className={cl.open} onClick={() => setSize(1)}>
+                            <Arrow />
+                        </div>
+
+                        <div className={cl.favoritesButton} onClick={isFavorite === false ? addInFavorites : deleteFavorites}>
+                            <MyButton
+                                width="100px"
+                                height="30px"
+                                color="white"
+                                bg={isFavorite ? "rgb(47, 94, 53)" : "rgb(145, 35, 35)"}
+                                name={isFavorite ? "Добавлено" : "В избранное"}
+                            />
+                        </div>
+
+                        <div className={cl.phone}
+                            onClick={
+                                visibilityPhone
+                                    ?
+                                    () => { }
+                                    :
+                                    () => setVisibilityPhone(true)
+                            }
+                        >
+                            <MyButton
+                                width="100px"
+                                height="30px"
+                                color="white"
+                                bg="grey"
+                                name={
+                                    visibilityPhone
+                                        ?
+                                        adv.phoneValue
+                                        :
+                                        "Телефон"
+                                }
+                            />
+                        </div>
                     </div>
                 </div>
             </div>
@@ -105,8 +166,6 @@ const AdvCardWithoutPhoto: React.FC<IAdvCardWithoutPhoto> = ({ adv }) => {
                                             `дом`
                                         :
                                         "комнату"
-
-
                             }
                         </p>
 
@@ -156,9 +215,44 @@ const AdvCardWithoutPhoto: React.FC<IAdvCardWithoutPhoto> = ({ adv }) => {
                     </div>
                 </div>
 
+                <div className={cl.buttons}>
+                    <div className={cl.open} onClick={() => setSize(0)}>
+                        <Arrow />
+                    </div>
 
-                <div className={cl.open + " " + cl.openActive} onClick={() => setSize(0)}>
-                    <Arrow />
+                    <div className={cl.favoritesButton} onClick={isFavorite === false ? addInFavorites : deleteFavorites}>
+                        <MyButton
+                            width="100px"
+                            height="30px"
+                            color="white"
+                            bg={isFavorite ? "rgb(47, 94, 53)" : "rgb(145, 35, 35)"}
+                            name={isFavorite ? "Добавлено" : "В избранное"}
+                        />
+                    </div>
+
+                    <div className={cl.phone}
+                        onClick={
+                            visibilityPhone
+                                ?
+                                () => { }
+                                :
+                                () => setVisibilityPhone(true)
+                        }
+                    >
+                        <MyButton
+                            width="100px"
+                            height="30px"
+                            color="white"
+                            bg="grey"
+                            name={
+                                visibilityPhone
+                                    ?
+                                    adv.phoneValue
+                                    :
+                                    "Телефон"
+                            }
+                        />
+                    </div>
                 </div>
             </div>
         )
