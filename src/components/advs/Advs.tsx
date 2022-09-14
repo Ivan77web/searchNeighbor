@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import cl from "./Advs.module.css"
 import { Context } from "../..";
 import { IAdvSearchWithPhotos } from "../../types/advs"
@@ -15,19 +15,23 @@ import { IFavorites } from "../../types/AdvPage";
 
 const Advs: React.FC = () => {
     const { firestore } = useContext(Context);
-    const {id} = useTypedSelector(state => state.userData)
+    const { id } = useTypedSelector(state => state.userData)
     const [typeAdvs, setTypeAdvs] = useState("searchHouse")
-    const [allAdvsWithPhotos] = useCollectionData<IAdvSearchWithPhotos>(
+    const [allAdvsWithPhotos, loadingAllAdvsWithPhotos] = useCollectionData<IAdvSearchWithPhotos>(
         firestore.collection("allAdvsWithPhotos")
     )
-    const [allAdvsWithoutPhotos] = useCollectionData<IAdvSearchWithoutPhotos>(
+    const [allAdvsWithoutPhotos, loadingAllAdvsWithoutPhotos] = useCollectionData<IAdvSearchWithoutPhotos>(
         firestore.collection("allAdvsWithoutPhotos")
     )
     const [favorites, loadingFavorites] = useCollectionData<IFavorites>(
         firestore.collection(`/favorites_${id}`)
     )
 
-    if (allAdvsWithPhotos && allAdvsWithoutPhotos && !loadingFavorites) {
+    if (loadingFavorites || loadingAllAdvsWithPhotos || loadingAllAdvsWithoutPhotos) {
+        return (
+            <Loader />
+        )
+    } else {
         return (
             <div className={cl.advs}>
                 <div className="container">
@@ -39,16 +43,20 @@ const Advs: React.FC = () => {
                     {
                         typeAdvs === "searchHouse"
                             ?
-                            <AdvsWithPhotos allAdvsWithPhotos={allAdvsWithPhotos}/>
+                            allAdvsWithPhotos && allAdvsWithPhotos.length !== 0
+                                ?
+                                <AdvsWithPhotos allAdvsWithPhotos={allAdvsWithPhotos} />
+                                :
+                                <h3 className={cl.infoError}>К сожалению, объявления отсутствуют</h3>
                             :
-                            <AdvsWithoutPhotos allAdvsWithoutPhotos={allAdvsWithoutPhotos} favorites={favorites}/>
+                            allAdvsWithoutPhotos && allAdvsWithoutPhotos.length !== 0
+                                ?
+                                <AdvsWithoutPhotos allAdvsWithoutPhotos={allAdvsWithoutPhotos} favorites={favorites} />
+                                :
+                                <h3 className={cl.infoError}>К сожалению, объявления отсутствуют</h3>
                     }
                 </div>
             </div>
-        )
-    } else {
-        return (
-            <Loader/>
         )
     }
 }

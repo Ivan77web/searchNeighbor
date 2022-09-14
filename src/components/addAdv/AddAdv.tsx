@@ -47,7 +47,7 @@ const AddAdv: React.FC = () => {
                     if (searchAgeStart && searchAgeEnd || !ageImportant) {
                         if (typeObject === "flat" || typeObject === "house") {
                             if (area && year && rooms && price && productPhoto) {
-                                await setDoc(doc(firestore, "allAdvsWithPhotos", `adv_${user.uid}_${advId}`), {
+                                const advObj = {
                                     userId: user.uid,
                                     advId: advId,
                                     typeAdv: typeAdv,
@@ -73,7 +73,10 @@ const AddAdv: React.FC = () => {
                                     badHabits: badHabits,
                                     commentInSearchNeighbor: commentInSearchNeighbor,
                                     numberOfPhotos: legthPhotos,
-                                });
+                                }
+
+                                await setDoc(doc(firestore, "allAdvsWithPhotos", `adv_${user.uid}_${advId}`), advObj);
+                                await setDoc(doc(firestore, `privateAdv_${user.uid}_withPhotos`, `adv_${user.uid}_${advId}`), advObj);
 
                                 for (let i = 0; i < legthPhotos; i++) {
                                     const storageRef = ref(storage, `adv_${user.uid}_${advId}_${i}`);
@@ -86,7 +89,7 @@ const AddAdv: React.FC = () => {
                             }
                         } else if (typeObject === "room") {
                             if (area && year && price && productPhoto) {
-                                await setDoc(doc(firestore, "allAdvsWithPhotos", `adv_${user.uid}_${advId}`), {
+                                const advObj = {
                                     userId: user.uid,
                                     advId: advId,
                                     typeAdv: typeAdv,
@@ -111,7 +114,10 @@ const AddAdv: React.FC = () => {
                                     badHabits: badHabits,
                                     commentInSearchNeighbor: commentInSearchNeighbor,
                                     numberOfPhotos: legthPhotos,
-                                });
+                                }
+
+                                await setDoc(doc(firestore, "allAdvsWithPhotos", `adv_${user.uid}_${advId}`), advObj);
+                                await setDoc(doc(firestore, `privateAdv_${user.uid}_withPhotos`, `adv_${user.uid}_${advId}`), advObj);
 
                                 for (let i = 0; i < legthPhotos; i++) {
                                     const storageRef = ref(storage, `adv_${user.uid}_${advId}_${i}`);
@@ -135,7 +141,7 @@ const AddAdv: React.FC = () => {
                             (startPrice && endPrice || !priceImportant) &&
                             (numberRooms || !numberRoomsImportant)
                         ) {
-                            await setDoc(doc(firestore, "allAdvsWithoutPhotos", `adv_${user.uid}_${advId}`), {
+                            const advObj = {
                                 userId: user.uid,
                                 advId: advId,
                                 typeAdv: typeAdv,
@@ -159,7 +165,10 @@ const AddAdv: React.FC = () => {
                                 numberRoomsImportant: numberRoomsImportant,
                                 peopleImportant: peopleImportant,
                                 priceImportant: priceImportant,
-                            });
+                            }
+
+                            await setDoc(doc(firestore, "allAdvsWithoutPhotos", `adv_${user.uid}_${advId}`), advObj);
+                            await setDoc(doc(firestore, `privateAdv_${user.uid}_withoutPhotos`, `adv_${user.uid}_${advId}`), advObj);
 
                             dispatch({ type: actionType.REMOVE })
                         } else {
@@ -171,7 +180,7 @@ const AddAdv: React.FC = () => {
                             (startPeople && endPeople || !peopleImportant) &&
                             (startPrice && endPrice || !priceImportant)
                         ) {
-                            await setDoc(doc(firestore, "allAdvsWithoutPhotos", `adv_${user.uid}_${advId}`), {
+                            const advObj = {
                                 userId: user.uid,
                                 advId: advId,
                                 typeAdv: typeAdv,
@@ -193,7 +202,10 @@ const AddAdv: React.FC = () => {
                                 areaImportant: areaImportant,
                                 peopleImportant: peopleImportant,
                                 priceImportant: priceImportant,
-                            });
+                            }
+
+                            await setDoc(doc(firestore, "allAdvsWithoutPhotos", `adv_${user.uid}_${advId}`), advObj);
+                            await setDoc(doc(firestore, `privateAdv_${user.uid}_withoutPhotos`, `adv_${user.uid}_${advId}`), advObj);
 
                             dispatch({ type: actionType.REMOVE })
                         } else {

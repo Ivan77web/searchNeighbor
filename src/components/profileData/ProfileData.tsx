@@ -41,7 +41,6 @@ const ProfileData: React.FC = () => {
             <div className={cl.menu}>
                 <Link to="myadvs"><p className={cl.partMenu}>Мои объявления</p></Link>
                 <Link to="favorites"><p className={cl.partMenu}>Избранное</p></Link>
-                <Link to="mycomments"><p className={cl.partMenu}>Мои отзывы</p></Link>
                 <p className={cl.partMenu} onClick={logout}>Выйти</p>
             </div>
         </div>

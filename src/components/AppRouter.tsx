@@ -10,8 +10,6 @@ import { Profile } from "./profile/Profile";
 import { AdvPage } from "./advPage/AdvPage";
 import { MyAdvs } from "./profile/myAdvs/MyAdvs";
 import { Favorites } from "./profile/favorites/Favorites";
-import { MyComments } from "./profile/myComments/MyComments";
-
 import { useCollectionData } from "react-firebase-hooks/firestore";
 import { Loader } from "./ui/loader/Loader";
 
@@ -49,7 +47,6 @@ const AppRouter = () => {
                         <Route path="" element={<MyAdvs />} />
                         <Route path="myadvs" element={<MyAdvs />} />
                         <Route path="favorites" element={<Favorites />} />
-                        <Route path="mycomments" element={<MyComments />} />
                     </Route>
 
                     <Route path="/auth" element={<Auth />} />
