@@ -131,7 +131,7 @@ const DataPeople: React.FC = () => {
 
                 <div className={cl.oneInputWithWidth}>
                     <MyTextareaRedux 
-                        width="400px" 
+                        width="100%" 
                         height="100px" 
                         placeholder="Комментарий" 
                         value={commentInSearchNeighbor} 

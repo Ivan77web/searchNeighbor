@@ -1,6 +1,5 @@
 .dataPeople{
     display: flex;
-
     -webkit-touch-callout: none; 
     -webkit-user-select: none;   
     -khtml-user-select: none;    
@@ -96,4 +95,66 @@
     background: rgb(247, 241, 241);
     color: black;
     border-radius: 10px;
+}
+
+@media (max-width: 991px) {
+    .dataPeople{
+        display: block;
+    }  
+
+    .aboutMe{
+        width: 100%;
+    }
+
+    .searchData{
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .choiceGender{
+        display: block;
+        width: 100%;
+        height: 140px;
+        margin: 0 auto;
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+
+    .men, .women, .anyGender{
+        width: 100%;
+    }
+
+    .oneInputWithWidth{
+        text-align: center;
+    }
+
+    .buttons{
+        display: block;
+    }
+
+    .oneButton{
+        margin: 0;
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+
+    .notImportant{
+        width: 110px;
+        margin: 0 auto;
+    }
+
+    .checkBoxes{
+        width: 80%;
+        margin: 0 auto;
+    }
+
+    .checkBox{
+        margin: 0;
+        margin-right: 10px;
+    }
+
+    .oneInputWithWidth{
+        width: 80%;
+    }
 }

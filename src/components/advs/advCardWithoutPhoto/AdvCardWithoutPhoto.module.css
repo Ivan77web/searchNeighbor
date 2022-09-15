@@ -24,6 +24,7 @@
 }
 
 .partOfData{
+    width: calc(100% - 275px);
     margin: 0;
     margin-left: 10px;
     margin-right: 10px;
@@ -102,4 +103,90 @@
 
 .helpWord{
     color: rgb(122, 122, 122);
+}
+
+@media (max-width: 880px) {
+    .cardClose{
+        height: 140px;
+    }
+
+    .buttons{
+        width: 100px;
+    }
+
+    .favoritesButton{
+        right: 0;
+        top: 0;
+    }
+    
+    .phone{
+        top: 35px;
+        right: 0;
+    }
+    
+    .open{
+        top: 70px;
+        right: 35px;
+    }
+
+    .partOfData{
+        width: calc(100% - 125px);
+    }
+}
+
+@media (max-width: 650px) {
+    .cardOpen{
+        height: 550px;
+    }
+
+    .dataOpen{
+        display: block;
+    }
+}
+
+@media (max-width: 480px) {
+    .cardClose{
+        height: 300px;
+    } 
+
+    .cardOpen{
+        height: 850px;
+    }
+
+    .buttons{
+        position: relative;
+        left: 0;
+        width: 100%;
+    }
+
+    .favoritesButton{
+        position: relative;
+        left: 0;
+        top: 0;
+        width: fit-content;
+        margin: 0 auto;
+        margin-top: 5px;
+        margin-bottom: 5px;
+        height: 50px;
+    }
+    
+    .phone{
+        position: relative;
+        left: 0;
+        top: 0;
+        width: fit-content;
+        margin: 0 auto;
+        margin-top: 5px;
+        margin-bottom: 5px;
+        height: 50px;
+    }
+    
+    .open{
+        position: relative;
+        left: 0;
+        top: 0;
+        margin: 0 auto;
+        margin-top: 5px;
+        margin-bottom: 10px;
+    }    
 }

@@ -216,7 +216,7 @@ const AdvCardWithoutPhoto: React.FC<IAdvCardWithoutPhoto> = ({ adv, favorites })
                 </div>
 
                 <div className={cl.buttons}>
-                    <div className={cl.open} onClick={() => setSize(0)}>
+                    <div className={cl.open + " " + cl.openActive} onClick={() => setSize(0)}>
                         <Arrow />
                     </div>
 

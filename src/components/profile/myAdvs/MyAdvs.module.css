@@ -14,7 +14,7 @@
 .searchNeighbor{
     position: absolute;
     width: 50%;
-    left: 0;
+    right: 0;
     line-height: 60px;
     text-align: center;
     cursor: pointer;
@@ -24,7 +24,7 @@
 .searchHouse{
     position: absolute;
     width: 50%;
-    right: 0;
+    left: 0;
     line-height: 60px;
     text-align: center;
     cursor: pointer;

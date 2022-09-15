@@ -1,21 +1,16 @@
 .auth{
     width: 100%;
-    height: calc(100vh - 50px);
-}
-
-.windowAuth{
-    width: 300px;
-    height: 500px;
-    margin: 0 auto;
-    background: blue;
+    height: calc(100vh - 60px);
 }
 
 .newUser{
+    position: relative;
+    top: 50px;
     width: 500px;
     height: 500px;
     margin: 0 auto;
     padding: 15px;
-    border: 3px solid rgb(190, 190, 190);
+    border: 2px solid rgb(163, 132, 132);
     border-radius: 10px;
 }
 
@@ -25,6 +20,7 @@
 }
 
 .nameInput, .firstNameInput, .phoneInput, .gender{
+    width: 300px;
     margin-top: 10px;
     margin-bottom: 10px;
 }
@@ -33,6 +29,8 @@
     position: relative;
     display: flex;
     height: 38px;
+    width: 300px;
+    left: 5px;
 }
 
 .men, .women{
@@ -66,6 +64,92 @@
     margin-top: 80px;
 }
 
+.button{
+    position: relative;
+    left: 5px;
+}
+
 .auth p{
     text-align: center;
+}
+
+.windowAuth{
+    position: relative;
+    width: 300px;
+    height: 500px;
+    margin: 0 auto;
+    top: 100px;
+    border: 2px solid rgb(163, 132, 132);
+    border-radius: 10px;
+}
+
+.intro{
+    text-align: center;
+    margin-top: 100px;
+}
+
+.buttonAuth{
+    position: absolute;
+    width: 200px;
+    height: 40px;
+    line-height: 40px;
+    border: 2px solid rgb(163, 132, 132);
+    border-radius: 10px;
+    bottom: 10px;
+    left: calc(50% - 100px);
+    cursor: pointer;
+}
+
+@media (max-width: 767px) {
+    .newUser{
+        top: 10px;
+        width: 300px;
+        height: 600px;
+    }  
+
+    .nameInput{
+        width: 200px;
+        margin: 0 auto;
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+
+    .firstNameInput{
+        width: 200px;
+        margin: 0 auto;
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+
+    .gender{
+        position: relative;
+        display: block;
+        height: 100px;
+        width: 100%;
+    }
+
+    .men{
+        width: 100%;
+        top: 0;
+        left: 0;
+    }
+
+    .women{
+        width: 100%;
+        top: 60px;
+        left: 0;
+    }
+
+    .phoneInput{
+        width: 200px;
+        margin: 0 auto;
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+}
+
+@media (max-width: 480px) {
+    .windowAuth{
+        width: 250px;
+    } 
 }

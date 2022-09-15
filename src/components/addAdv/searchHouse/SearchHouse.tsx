@@ -206,7 +206,7 @@ const SearchHouse: React.FC = () => {
 
                     <div className={cl.oneInputWithWidth}>
                         <MyTextareaRedux 
-                            width="400px" 
+                            width="98%" 
                             height="100px" 
                             placeholder="Комментарий" 
                             value={commentInSearchHouse} 

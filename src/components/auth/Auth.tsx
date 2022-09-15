@@ -120,7 +120,7 @@ const Auth: React.FC = () => {
                     <div className={cl.data}>
                         <div className={cl.nameInput}>
                             <MyInput
-                                width="300px"
+                                width="100%"
                                 height="30px"
                                 placeholder="Имя"
                                 value={name}
@@ -130,7 +130,7 @@ const Auth: React.FC = () => {
 
                         <div className={cl.firstNameInput}>
                             <MyInput
-                                width="300px"
+                                width="100%"
                                 height="30px"
                                 placeholder="Фамилия"
                                 value={firstName}
@@ -145,7 +145,7 @@ const Auth: React.FC = () => {
 
                         <div className={cl.phoneInput}>
                             <MyInput
-                                width="300px"
+                                width="100%"
                                 height="30px"
                                 placeholder="Телефон"
                                 value={phone}
@@ -155,7 +155,7 @@ const Auth: React.FC = () => {
 
                         <div className={cl.button} onClick={addUserInDB}>
                             <MyButton
-                                width="312px"
+                                width="100%"
                                 height="40px"
                                 bg="rgb(145, 35, 35)"
                                 color="white"
@@ -166,7 +166,8 @@ const Auth: React.FC = () => {
                 </div>
                 :
                 <div className={cl.windowAuth}>
-                    <p onClick={login}>ВОЙТИ</p>
+                    <p className={cl.intro}>Войдите с помощью своего Google аккаунта. Это не займет много времени.</p>
+                    <p className={cl.buttonAuth} onClick={login}>ВОЙТИ</p>
                 </div>
             }
         </div>

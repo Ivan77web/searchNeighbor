@@ -3,7 +3,8 @@
 }
 
 .oneInput{
-    width: fit-content;
+    width: 400px;
+    max-width: calc(80%);
     margin: 0 auto;
     margin-top: 10px;
     margin-bottom: 10px;
@@ -11,7 +12,8 @@
 
 .choiceGender{
     display: flex;
-    width: 412px;
+    width: 400px;
+    max-width: 80%;
     height: 40px;
     margin: 0 auto;
     margin-top: 5px;
@@ -30,4 +32,17 @@
     background: rgb(247, 241, 241);
     color: black;
     border-radius: 10px;
+}
+
+@media (max-width: 767px) {
+    .choiceGender{
+        display: block;
+        width: 100%;
+        height: 90px;
+    }
+
+    .men, .women{
+        width: 78%;
+        margin: 0 auto;
+    }
 }

@@ -23,35 +23,35 @@ const AboutMe: React.FC = () => {
             <p className={cl.intro}>Обо мне</p>
 
             <div className={cl.oneInput}>
-                <MyInputRedux width="400px" height="30px" placeholder="Имя" value={nameValue}  typeForDispatch={actionType.setNameValue}/>
+                <MyInputRedux width="100%" height="30px" placeholder="Имя" value={nameValue} typeForDispatch={actionType.setNameValue} />
             </div>
 
             <div className={cl.oneInput}>
-                <MyInputRedux width="400px" height="30px" placeholder="Фамилия" value={firstNameValue} typeForDispatch={actionType.setFirstNameValue}/>
+                <MyInputRedux width="100%" height="30px" placeholder="Фамилия" value={firstNameValue} typeForDispatch={actionType.setFirstNameValue} />
             </div>
 
             <div className={cl.oneInput}>
-                <MyInputRedux width="400px" height="30px" placeholder="Номер телефона" value={phoneValue} typeForDispatch={actionType.setPhoneValue}/>
+                <MyInputRedux width="100%" height="30px" placeholder="Номер телефона" value={phoneValue} typeForDispatch={actionType.setPhoneValue} />
             </div>
 
             <div className={cl.oneInput}>
-                <MyInputRedux width="400px" height="30px" placeholder="Город" value={city} typeForDispatch={actionType.setCity}/>
+                <MyInputRedux width="100%" height="30px" placeholder="Город" value={city} typeForDispatch={actionType.setCity} />
             </div>
 
             <div className={cl.oneInput}>
-                <MyInputRedux width="400px" height="30px" placeholder="Возраст" value={age} typeForDispatch={actionType.setAge}/>
+                <MyInputRedux width="100%" height="30px" placeholder="Возраст" value={age} typeForDispatch={actionType.setAge} />
             </div>
 
             <div className={cl.choiceGender}>
-                <div 
-                    className={myGender === "men" ? cl.men + " " + cl.active : cl.men} 
+                <div
+                    className={myGender === "men" ? cl.men + " " + cl.active : cl.men}
                     onClick={() => dispatch({ type: actionType.setMyGender, payload: "men" })}
                 >
                     Мужской
                 </div>
 
                 <div
-                    className={myGender === "women" ? cl.women + " " + cl.active : cl.women} 
+                    className={myGender === "women" ? cl.women + " " + cl.active : cl.women}
                     onClick={() => dispatch({ type: actionType.setMyGender, payload: "women" })}
                 >
                     Женский
@@ -59,7 +59,7 @@ const AboutMe: React.FC = () => {
             </div>
 
             <div className={cl.oneInput}>
-                <MyTextareaRedux width="400px" height="100px" placeholder="Обо мне" value={aboutMe} typeForDispatch={actionType.setAboutMe}/>
+                <MyTextareaRedux width="100%" height="100px" placeholder="Обо мне" value={aboutMe} typeForDispatch={actionType.setAboutMe} />
             </div>
         </div>
     )

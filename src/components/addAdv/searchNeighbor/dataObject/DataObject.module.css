@@ -45,7 +45,7 @@
 }
 
 .oneInputWithWidth{
-    width: fit-content;
+    width: 80%;
     margin: 0 auto;
     margin-top: 20px;
     margin-bottom: 5px;
@@ -67,4 +67,46 @@
     background: rgb(247, 241, 241);
     color: black;
     border-radius: 10px;
+}
+
+@media (max-width: 1200px) {
+    .data{
+        display: block;
+    }
+
+    .photoBlock{
+        width: 100%;
+    }
+    
+    .info{
+        width: 100%;
+    }    
+}
+
+@media (max-width: 650px) {
+    .buttons{
+        width: fit-content;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin: 0 auto;
+    }
+
+    .oneButton{
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+}
+
+@media (max-width: 550px) {
+    .typeSearch{
+        display: block;
+        width: 100%;
+        height: 160px;
+        margin-top: 50px;
+    }
+
+    .oneTypeSearch{
+        width: 100%;
+    }
 }

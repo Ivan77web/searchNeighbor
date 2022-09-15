@@ -1,7 +1,9 @@
 .block{
     position: relative;
     width: 100%;
+    max-width: 800px;
     height: 100%;
+    margin: 0 auto;
     -ms-user-select: none; 
     -moz-user-select: none; 
     -webkit-user-select: none; 
@@ -47,6 +49,9 @@
     height: 100px;
     overflow-x: scroll;
     overflow-y: hidden;
+    background: rgb(233, 233, 233);
+    border-radius: 10px;
+    margin-top: 10px;
 }
 
 .allPhotos::-webkit-scrollbar{
@@ -58,9 +63,49 @@
     max-height: 100px;
     margin-left: 5px;
     margin-right: 5px;
+    margin-top: 8px;
     object-fit: contain;
 }
 
 .none{
     display: none;
+}
+
+@media (max-width: 767px) {
+    .button{
+        position: absolute;
+        top: 86%;
+        width: 50px;
+        height: 50px;
+    }
+    
+    .buttonBack{
+        margin-left: 30%;
+    }
+    
+    .buttonIncrease{
+        margin-right: 30%;
+    }
+
+    .allPhotos{
+        display: flex;
+        width: 100%;
+        height: 100px;
+        margin-top: 120px;
+        
+    }
+}
+
+@media (max-width: 480px) {
+    .block{
+        margin-bottom: 0;
+    }
+    
+    .buttonBack{
+        margin-left: 20%;
+    }
+    
+    .buttonIncrease{
+        margin-right: 20%;
+    }
 }

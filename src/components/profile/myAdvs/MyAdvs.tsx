@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import { useCollectionData } from "react-firebase-hooks/firestore";
 import { Context } from "../../..";
 import { useTypedSelector } from "../../../hooks/useTypedSelector";
@@ -26,17 +26,17 @@ const MyAdvs: React.FC = () => {
 
                 <div className={cl.typeAdv}>
                     <div
-                        className={typeAdv === "searchNeighbor" ? cl.searchNeighbor + " " + cl.active : cl.searchNeighbor}
-                        onClick={() => setTypeAdv("searchNeighbor")}
-                    >
-                        Ищу соседа
-                    </div>
-
-                    <div
                         className={typeAdv === "searchNeighbor" ? cl.searchHouse : cl.active + " " + cl.searchHouse}
                         onClick={() => setTypeAdv("searchHouse")}
                     >
                         Ищу квартиру для подслеления
+                    </div>
+
+                    <div
+                        className={typeAdv === "searchNeighbor" ? cl.searchNeighbor + " " + cl.active : cl.searchNeighbor}
+                        onClick={() => setTypeAdv("searchNeighbor")}
+                    >
+                        Ищу соседа
                     </div>
 
                     {
